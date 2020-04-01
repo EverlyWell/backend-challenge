@@ -4,7 +4,7 @@
 
 Using a language and framework of your choice, we'd like you to create a simple experts directory search tool. The tool can either be a full featured application or API only.
 
-* Spend, at max, 3 hours on this project.
+* Spend, at max, 4 hours on this project.
 
 ### Requirements
 
