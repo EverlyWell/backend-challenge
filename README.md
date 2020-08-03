@@ -32,13 +32,15 @@ We encourage the use of any libraries for everything except the search functiona
 * Navigable code
 * Efficient algorithms
 * Good separation of concerns
-* Test coverage
+* Error handling
+* Usage of gems/libraries
 
 ### Things we like:
 
 * Well commented & well organized code
 * Quality over quantity (the code you write should be good) 
 * Small, meaningful, commits
+* Tests!
 * Respect for the time limit - if you are in the midst of some work that you would like to finish, but have hit the 4 hour time limit, please split additional work into a separate branch, to be evaluated separately
 
 ### Submission
