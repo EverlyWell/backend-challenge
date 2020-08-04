@@ -46,7 +46,6 @@ We encourage the use of any libraries for everything except the search functiona
 ### Submission
 
 * __Fork__ this repository to your own git
-* Create a new branch to push your commits as you work
-* When complete, create a PR to the master branch (of your personal repo) so we can see the code that you added!
+* Remember to make meaningful commits as you work
 * Somehow share your repository with us
 * __Important:__ If there are credentials required (.env or master.key file), please email these to us directly or we can’t review your project
