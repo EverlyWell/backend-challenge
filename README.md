@@ -2,7 +2,7 @@
 
 ### Overview
 
-Using a language and framework of your choice, we'd like you to create a simple experts directory search tool. The tool can either be a full featured application or API only.
+Using Ruby on Rails, we'd like you to create a simple experts directory search tool. The tool can either be a full featured application or API only.
 
 * Spend no more than 4 hours coding for the project. Do not include any initial application setup in this time limit.
 
