@@ -1,0 +1,29 @@
+---
+#
+# Application level error codes
+#
+# `code_id` is a three digit string (ie. '000').
+# `detail` is an explanation of the error.
+# `http_status` is a symbol corresponding to Rails status code names (see http://www.railsstatuscodes.com)
+# `title` error title
+#
+errors: &errors
+  #
+  # This is the default error, do not erase.
+  #
+  '000':
+    :detail: Something went wrong. Did you forget to say "please"?
+    :http_status: bad_request
+    :title: An error happened
+  '666':
+    :detail: Wrong username or password.
+    :http_status: unauthorized
+    :title: Wrong authentication credentials
+
+
+test:
+  <<: *errors
+development:
+  <<: *errors
+production:
+  <<: *errors

@@ -1,0 +1,23 @@
+attributes:
+  - content
+  - foreign_key
+  - inheritance
+  - primary_keys
+  - timestamps
+disconnected: true
+filename: docs/data_model/app-erd
+filetype: png
+indirect: true
+inheritance: true
+markup: true
+notation: bachman
+orientation: horizontal
+polymorphism: true
+sort: true
+warn: true
+title: Backend Challenge
+exclude: ApplicationRecord,ActiveRecord::InternalMetadata,ActiveRecord::AdvisoryLockBase,ActiveRecord::SchemaMigration,primary::SchemaMigration
+only: null
+only_recursion_depth: null
+prepend_primary: false
+cluster: true
