@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'faraday'
 gem 'fast_jsonapi'
@@ -36,7 +37,7 @@ group :development do
   gem 'annotate'
   gem 'listen', '~> 3.3'
   gem 'guard-rspec', require: false
-  gem 'rails-erd'
+  gem 'rails-erd', github: 'guapolo/rails-erd'
   gem 'spring'
   gem 'spring-commands-rspec'
 end

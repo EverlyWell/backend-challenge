@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope 'health', as: 'health', defaults: { format: :json } do
-    get 'ping',    to: 'health#show',    as: :ping
-    get 'live',    to: 'health#live',    as: :live
+  namespace :api, defaults: { format: :json }, path: '' do
+    draw :v1
   end
+
+  draw :health
 
   root 'health#show'
 end
