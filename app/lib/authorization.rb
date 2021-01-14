@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Authorization
-  #
-  # JWT_HMAC_SECRET should be encoded with Base64.strict_encode64 & the original string should have 512 bits length
-  #
-
   EXPIRATION_TIME = 24.hours
 
   JWT_HEADER_FIELDS = {
@@ -25,11 +21,21 @@ class Authorization
         name: user.name,
         exp: expiration_time
       }
-      JWT.encode(payload, ENV['JWT_HMAC_SECRET'], JWT_ENCODING_ALGORITHM, JWT_HEADER_FIELDS)
+      JWT.encode(
+        payload,
+        Rails.application.credentials.jwt_hmac_secret,
+        JWT_ENCODING_ALGORITHM,
+        JWT_HEADER_FIELDS
+      )
     end
 
     def authorize!(jwt)
-      decoded_payload = JWT.decode(jwt, ENV['JWT_HMAC_SECRET'], true, JWT_OPTIONS)
+      decoded_payload = JWT.decode(
+        jwt,
+        Rails.application.credentials.jwt_hmac_secret,
+        true,
+        JWT_OPTIONS
+      )
       user_id = decoded_payload.first['sub']
       User.find(user_id)
     end

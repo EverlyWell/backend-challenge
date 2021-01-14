@@ -42,7 +42,7 @@ describe JWTAuthorizationController, type: :request do
             exp: (Time.zone.now.utc - 3.days).to_i
           }
 
-          jwt = JWT.encode(payload, ENV['JWT_HMAC_SECRET'], 'HS512')
+          jwt = JWT.encode(payload, Rails.application.credentials.jwt_hmac_secret, 'HS512')
           get '/test', headers: { 'Authorization' => "Bearer #{jwt}" }
 
           expect(response).to have_http_status(:unauthorized)

@@ -32,7 +32,7 @@ REDIS_URL=
 
 ```bash
 # Afer installing RVM, create and use gemset
-rvm use --create --install
+rvm use 2.7.2@expertsdir --create --install
 
 # For rails-erd gem
 brew install graphviz
@@ -76,7 +76,7 @@ API docs are created with the help of the [rspec_api_documentation](https://gith
 
 ## Notes
 
-- Development/test secrets are stored on `.env.test` and `.env.development` files, since these are local, development credentials, no harm on them being in version control.
+- I used Bitly instead of Google Shortener (the services is deprecated since 2018). An API key is provided in the credentials file to be used while reviewing the app.
 
 ---
 
