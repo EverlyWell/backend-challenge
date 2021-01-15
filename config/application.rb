@@ -27,6 +27,8 @@ module BackendChallenge
     config.active_job.queue_adapter = :sidekiq
     config.api_only = true
 
+    config.active_record.schema_format = :sql
+
     # load app error codes
     config.x.error_codes = config_for(:error_codes)
   end

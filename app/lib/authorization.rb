@@ -18,7 +18,7 @@ class Authorization
     def create_token(user)
       payload = {
         sub: user.id,
-        name: user.name,
+        name: user.login,
         exp: expiration_time
       }
       JWT.encode(
