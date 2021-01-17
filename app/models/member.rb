@@ -1,8 +1,17 @@
 class Member < ApplicationRecord
+  after_create :enqueue_creation_jobs
+
   validates :name, presence: true
   validates :url, presence: true, url: true
 
   has_many :headings, dependent: :destroy, inverse_of: :member
+
+  private
+
+  def enqueue_creation_jobs
+    ::Members::Website::UrlShortenerWorker.perform_async(id)
+    ::Members::Website::HeadingExtractionWorker.perform_async(id)
+  end
 end
 
 # ## Schema Information

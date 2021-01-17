@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-ssl.bitly.com/v4/shorten
+    body:
+      encoding: UTF-8
+      string: '{"long_url":"https://the.random.guys.com/rick-sanchez-c-1","domain":"bit.ly"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer [BITLY_API_KEY]
+      User-Agent:
+      - Faraday v1.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 17 Jan 2021 23:54:29 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '289'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-xss-protection:
+      - 1; mode=blockFilter
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - default-src 'none
+      via:
+      - 1.1 google
+      alt-svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: '{"created_at":"2021-01-17T20:52:04+0000","id":"bit.ly/3qnE1Ue","link":"https://bit.ly/3qnE1Ue","custom_bitlinks":[],"long_url":"https://the.random.guys.com/rick-sanchez-c-1","archived":false,"tags":[],"deeplinks":[],"references":{"group":"https://api-ssl.bitly.com/v4/groups/Bl1e2e8Ax0d"}}'
+  recorded_at: Sun, 17 Jan 2021 23:54:29 GMT
+recorded_with: VCR 6.0.0

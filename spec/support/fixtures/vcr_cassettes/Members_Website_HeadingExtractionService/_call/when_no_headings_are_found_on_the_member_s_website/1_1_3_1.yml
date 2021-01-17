@@ -1,0 +1,165 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://vulfpeck.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      connection:
+      - keep-alive
+      content-length:
+      - '3414'
+      cache-control:
+      - max-age=3600
+      content-type:
+      - text/html; charset=utf-8
+      etag:
+      - '"ade150bdfec753a32aa16246cd6f0f7b91367526136ca977bc6cdee7218b9a4f"'
+      last-modified:
+      - Mon, 21 Dec 2020 17:37:30 GMT
+      strict-transport-security:
+      - max-age=31556926
+      accept-ranges:
+      - bytes
+      date:
+      - Sun, 17 Jan 2021 23:17:33 GMT
+      x-served-by:
+      - cache-dfw18646-DFW
+      x-cache:
+      - MISS
+      x-cache-hits:
+      - '0'
+      x-timer:
+      - S1610925453.466277,VS0,VE289
+      vary:
+      - x-fh-requested-host, accept-encoding
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n
+        \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+        \ <meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n  <base target=\"_blank\">\n
+        \ <meta name=\"description\" content=\"Official website for the band Vulfpeck.\"
+        />\n  <title>Vulfpeck</title> \n  <meta property=\"og:image\" content=\"http://www.lobosenbolos.com/wp-content/uploads/2013/04/vulfpeck.jpg\"/>\n
+        \ <meta property=\"og:title\" content=\"Vulfpeck\"/>\n  <meta property=\"og:site_name\"
+        content=\"vulfpeck.com\"/>\n  <meta property=\"og:description\" content=\"Vulfpeck
+        is a half-Jewish German-American rhythm section based in Los Angeles. Originally
+        studio musicians at Vulf Records, Jack Stratton, Joe Dart, Woody Goss, Theo
+        Katzman & Joey Dosik have released three albums under Vulfpeck.\" />\n  <meta
+        name=\"viewport\" content=\"width=device-width\">\n\n  \n  <style type=\"text/css\">\n
+        \ \n    a:link {color:#CE2029; text-decoration:none;}\n    a:visited {color:#CE2029;
+        text-decoration:none;}\n    a:hover {text-decoration:underline;}\n    \n    pre
+        {\n      font: 11.0px 'Vulf Mono Italic';\n      width: 585px;\n      position:
+        relative;\n      white-space: -moz-pre-wrap; /* Mozilla, supported since 1999
+        */\n      white-space: -pre-wrap; /* Opera */\n      white-space: -o-pre-wrap;
+        /* Opera */\n      white-space: pre-wrap; /* CSS3 - Text module (Candidate
+        Recommendation) http://www.w3.org/TR/css3-text/#white-space */\n      word-wrap:
+        break-word; /* IE 5.5+ */\n    }\n    \n  @font-face {\n    font-family: 'Vulf
+        Mono Italic';\n    src:    url('Vulf_Mono-Italic_web.eot');\n    src:    url('Vulf_Mono-Italic_web.eot?#iefix')
+        format('embedded-opentype'),\n            url('Vulf_Mono-Italic_web.woff')
+        format('woff'),\n            url('Vulf_Mono-Italic_web.woff2') format('woff2'),\n
+        \           url('Vulf_Mono-Italic_web.ttf') format('truetype'),\n            url('Vulf_Mono-Italic_web.svg#svgFontName')
+        format('svg');\n    font-weight: 400;\n    font-style: normal;\n    }\n         \n
+        \ </style>\n \n  <script>\n  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n
+        \ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n
+        \ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n
+        \ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n
+        \ ga('create', 'UA-5438722-3', 'auto');\n  ga('send', 'pageview');\n\n  </script>\n\n\n</head>\n\n<body>\n\n\n
+        \ \n<pre>\n-----------------------------------------\n--- vulfpeck ----------------------------\n-----------------------------------------\n--------------------------
+        official -----\n-------------------------------- site ---\n-----------------------------------------\n
+        \               \n        VULFPECK /// Vollmilch\n        \n         CLEAR
+        VINYL PRESSING\n         \n       \"Man of My Word Edition\"\n       \n   *
+        \ <a href=\"https://vuuulf.com/vollmilch-clear-vinyl\">reserve a copy, 30
+        days only</a>  *\n             \n                 * * *\n                 \nDISCOGRAPHY\n\n
+        \ 2020\n    THE JOY OF MUSIC, \n    THE JOB OF REAL ESTATE\n      <a href=\"https://www.youtube.com/watch?v=vJfiOuDdetg\">Bach
+        Vision Test</a>\n      <a href=\"https://www.youtube.com/watch?v=b2_CJ_nx-l4\">3
+        on E</a>\n      <a href=\"https://www.youtube.com/watch?v=6GUGFvoaTCM\">Test
+        Drive (Inst.)</a>\n      <a href=\"https://www.youtube.com/watch?v=XnE-zRYxGFM\">Radio
+        Shack</a>\n      <a href=\"https://www.youtube.com/watch?v=NzxW8nxgENA\">LAX</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=Azgm7q4O1Nc\">Poinciana</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=qPDM6HpH2wY\">Eddie Buzzsaw</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=fSdcSc_8fU4\">Something</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=_g2nHEPC1Fc\">Santa Baby</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=cLtjdwq77JY\">Off and Away</a>\n\n
+        \ 2019\n    LIVE AT MADISON SQUARE GARDEN\n      <a href=\"https://www.youtube.com/watch?v=rv4wf7bzfFE\">Concert
+        Film</a>\n      \n  2018\n    HILL CLIMBER\n      <a href=\"https://www.youtube.com/watch?v=rr6f26I2cBI\">Half
+        of the Way</a>\n      <a href=\"https://www.youtube.com/watch?v=WrdsotPDrRg\">Darwin
+        Derby</a>\n      <a href=\"https://www.youtube.com/watch?v=WS3AgyjIf8Q\">Lonely
+        Town</a> \n      <a href=\"https://www.youtube.com/watch?v=x0vgMl6n7m0\">Love
+        is a Beautiful Thing</a> \n      <a href=\"https://www.youtube.com/watch?v=VSBxCgj3Vck\">For
+        Survival</a> \n      <a href=\"https://www.youtube.com/watch?v=NsvjOrZOR5U\">Soft
+        Parade</a>\n      <a href=\"https://www.youtube.com/watch?v=to22meUpSEI\">Lost
+        My Treble Long Ago</a>\n      <a href=\"https://www.youtube.com/watch?v=F7nCDrf90V8\">Disco
+        Ulysses (Inst.)</a>\n      <a href=\"https://www.youtube.com/watch?v=3HOb5vXOIkw\">The
+        Cup Stacker</a>\n      <a href=\"https://www.youtube.com/watch?v=Nq5LMGtBmis\">It
+        Gets Funkier IV</a>\n  \n  2017\n    MR FINISH LINE\n      <a href=\"https://www.youtube.com/watch?v=WQm4R0LM2mE\">Birds
+        of a Feather</a>\n      <a href=\"https://www.youtube.com/watch?v=IQIPXJvX9gY\">Baby
+        I Don't Know Oh Oh</a>\n      <a href=\"https://www.youtube.com/watch?v=AwssQtRvB8k\">Mr.
+        Finish Line</a>\n      <a href=\"https://www.youtube.com/watch?v=iFG18LOlj-o\">Tee
+        Time</a>\n      <a href=\"https://www.youtube.com/watch?v=wvpLjcXU3hY\">Running
+        Away</a>\n      <a href=\"https://www.youtube.com/watch?v=l_BtsZSf2yM\">Hero
+        Town</a>\n      <a href=\"https://www.youtube.com/watch?v=EK6Yyxg5P-M\">Business
+        Casual</a>\n      <a href=\"https://www.youtube.com/watch?v=14UnV-VKoGw\">Vulf
+        Pack</a>\n      <a href=\"https://www.youtube.com/watch?v=S73A9k-UoS8\">Grandma</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=csJ7mBWb2Zo\">Captain Hook</a>\n
+        \n  2016\n    THE BEAUTIFUL GAME\n      <a href=\"https://www.youtube.com/watch?v=CbO2e65gmwg\">The
+        Sweet Science</a>\n      <a href=\"https://www.youtube.com/watch?v=qTUnDV3MgVQ\">Animal
+        Spirits</a>\n      <a href=\"https://www.youtube.com/watch?v=le0BLAEO93g\">Dean
+        Town</a>\n      <a href=\"https://www.youtube.com/watch?v=LqBOzFqpZzM\">Conscious
+        Club</a>\n      <a href=\"https://www.youtube.com/watch?v=KCYTR3wReXc\">El
+        Chepe</a>\n      <a href=\"https://www.youtube.com/watch?v=u8fWZ9FjIK4\">1
+        for 1, DiMaggio</a>\n      <a href=\"https://www.youtube.com/watch?v=8DRCGcuByQc\">Daddy,
+        He Got a Tesla</a>\n      <a href=\"https://www.youtube.com/watch?v=8Y5nUhNzuNc\">Margery,
+        My First Car</a>\n      <a href=\"https://www.youtube.com/watch?v=t2pz6uNiheg\">Aunt
+        Leslie</a>\n      <a href=\"https://www.youtube.com/watch?v=AWBUnr0F3Zo\">Cory
+        Wong</a>\n\n  2015\n    THRILL OF THE ARTS\n      <a href=\"https://www.youtube.com/watch?v=eCO_hcBz-0I\">Welcome
+        to Vulf Records</a>\n      <a href=\"https://www.youtube.com/watch?v=yG96RttfZtM\">Back
+        Pocket</a>\n      <a href=\"https://www.youtube.com/watch?v=dhNfddJRulQ\">Funky
+        Duck</a>\n      <a href=\"https://www.youtube.com/watch?v=4dpvyZBKg6Q\">Rango
+        II</a>\n      <a href=\"https://www.youtube.com/watch?v=j3rwKl267gE\">Game
+        Winner</a>\n      <a href=\"https://www.youtube.com/watch?v=goeYYzXGcgw\">Walkies</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=d5K3UgrPdbQ\">Christmas in
+        L.A.</a>\n      <a href=\"https://www.youtube.com/watch?v=ZfQpaDzk5-k\">Conscious
+        Club (Instr.)</a>\n      <a href=\"https://www.youtube.com/watch?v=w9COHCrwNQs\">Smile
+        Meditation</a>\n      <a href=\"https://www.youtube.com/watch?v=47CDy1egb30\">Guided
+        Smile Meditation</a>   \n\n  2014\n    FUGUE STATE\n      <a href=\"https://www.youtube.com/watch?v=3RGoXZvuUBw\">Fugue
+        State</a>\n      <a href=\"https://www.youtube.com/watch?v=jRHQPG1xd9o\">1612</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=qDLSROF0BTE\">First Place</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=KaBBWWj5h_c\">Sky Mall</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=R6rOD0gu1zM\">Christmas in
+        L.A. (Instr.)</a>\n      <a href=\"https://www.youtube.com/watch?v=q7zbdIbEC5o\">Newsbeat</a>\n
+        \ \n  2013        \n    MY FIRST CAR\n      <a href=\"https://www.youtube.com/watch?v=r4G0nbpLySI\">Wait
+        for the Moment</a>\n      <a href=\"https://www.youtube.com/watch?v=e4mC3dmwqEY\">The
+        Birdwatcher</a>\n      <a href=\"https://www.youtube.com/watch?v=R3BPJstxExk\">The
+        Speedwalker</a>\n      <a href=\"https://www.youtube.com/watch?v=uUyuGjLy4BQ\">My
+        First Car</a>\n      <a href=\"https://www.youtube.com/watch?v=MO89CacIvXc\">Kuhmilch
+        74 BPM</a>\n      <a href=\"https://www.youtube.com/watch?v=S3nl7IqZayg\">It
+        Gets Funkier III</a>\n  \n  2012             \n    VOLLMILCH\n      <a href=\"https://www.youtube.com/watch?v=XftabV9S2z0\">Outro</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=41o5QeG-E_Y\">A Walk to Remember</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=t3qYfe7Nsdc\">Adrienne &amp;
+        Adrianne</a>\n      <a href=\"https://www.youtube.com/watch?v=C430AWTvMPs\">It
+        Gets Funkier II</a>\n      <a href=\"https://www.youtube.com/watch?v=npqD602G90o\">Barbara</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=4RcFPLt3Dd0\">Mean Girls</a>\n
+        \              \n  2011\n    MIT PECK \n      <a href=\"https://www.youtube.com/watch?v=KQRV0c1KXYc\">Beastly</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=yKg_3kyIhHc\">It Gets Funkier</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=c8yCEZdPVSc\">Rango</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=jxdin8CEp94\">Cars Too</a>\n
+        \     <a href=\"https://www.youtube.com/watch?v=hNn9_NMaW5k\">Prom</a>\n      <a
+        href=\"https://www.youtube.com/watch?v=mSMkZ7E_eLs\">Tomboy</a>\n                     \nMERCH\n\n
+        \ PLUGINS\n    <a href=\"https://goodhertz.co/vulf-comp\">Vulf Compressor</a>\n
+        \ \n  FONTS\n    <a href=\"http://ohnotype.co/fonts/vulf\">Vulf Mono</a>\n
+        \   <a href=\"http://ohnotype.co/fonts/vulf\">Vulf Sans</a> \n    \n  INSTRUMENTS\n
+        \   <a href=\"https://www.music-man.com/instruments/basses/joe-dart\">Joe
+        Dart Bass</a>\n    \n\nbooking: vulfpeckteam@paradigmagency.com \nlicensing:
+        licensing@zyncmusic.com\n(c) Vulf Records 2020\n<a href=\"https://cdn.forms-content.sg-form.com/424c771e-13e0-11ea-bd86-de4c068299a0\">join
+        email list</a>\n</pre>\n\n\n\n\n</body>\n</html>"
+  recorded_at: Sun, 17 Jan 2021 23:17:33 GMT
+recorded_with: VCR 6.0.0
