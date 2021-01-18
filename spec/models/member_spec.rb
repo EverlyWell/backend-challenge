@@ -48,6 +48,7 @@ RSpec.describe Member, type: :model do
           'Authors¶'
         ]
       end
+      let(:expected_short_url) { 'https://bit.ly/3qrL9iw' }
 
       before do
         Sidekiq::Testing.fake!
@@ -66,7 +67,7 @@ RSpec.describe Member, type: :model do
 
       it "shortens the member's website URL" do
         expect(member.short_url).to be_present
-        expect(member.short_url).to eq 'fooo'
+        expect(member.short_url).to eq expected_short_url
       end
     end
   end

@@ -31,9 +31,8 @@ module Members
           private
 
           def parse_response(resp, ctx)
-            if resp.status == 201
+            if resp.status.between?(200, 201)
               parsed_response = Oj.load(resp.body)
-
               if (short_url = parsed_response['link'])
                 ctx.short_url = short_url
               else
