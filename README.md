@@ -55,6 +55,12 @@ We encourage the use of any libraries for everything except the search functiona
         bin/rspec
         
 * Feel free to add to add/modify existing specs. Just make sure the original request specs are still present.
+* Here are the required routes:
+        
+        [POST] "/friendships"
+        [POST] "/members"
+         [GET] "/members"
+         [GET] "/members/:member_id"
 
 ## Reviewer Setup
 
