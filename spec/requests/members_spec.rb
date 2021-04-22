@@ -49,14 +49,14 @@ describe 'Members', type: :request do
   end
 
   describe 'viewing a member' do
-    # context 'when member exists' do
-    #   subject { post '/members', headers: headers }
-    #
-    #   it 'returns the correct status code' do
-    #     subject
-    #     expect(response).to have_http_status(:success)
-    #   end
-    # end
+    context 'when member exists' do
+      subject { get "/members/#{Member.first.id}", headers: headers }
+
+      it 'returns the correct status code' do
+        subject
+        expect(response).to have_http_status(:success)
+      end
+    end
 
     context 'when member not fond' do
       subject { get '/members/0', headers: headers }
