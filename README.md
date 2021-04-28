@@ -67,6 +67,7 @@ We encourage the use of any libraries for everything except the search functiona
 1. Clone the candidate's branch
 1. Execute the following:
 
+        bin/bundle
         bin/rails db:drop
         bin/setup
         bin/rspec
