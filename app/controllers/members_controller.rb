@@ -7,6 +7,10 @@ class MembersController < ApplicationController
     @member = Member.find params[:id]
   end
 
+  def index
+    @members = Member.all
+  end
+
   def create
     @member = Member.new member_params
     if @member.save

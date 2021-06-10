@@ -1,0 +1,19 @@
+<%= link_to 'Add member', new_member_path %>
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Short URL</td>
+    <td># Friends</td>
+    <td></td>
+  </thead>
+  <tbody>
+  <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td><%= link_to member.shortened_url, member.shortened_url %></td>
+      <td><%= member.friend_count %></td>
+      <td><%= link_to 'View profile', member_path(member) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+<table>
