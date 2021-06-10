@@ -11,13 +11,13 @@ class MembersController < ApplicationController
   end
 
   def index
-    @members = Member.all
+    @members = Member.all.order(name: :asc)
   end
 
   def create
-    @member = Member.new member_params
-    if @member.save
-      redirect_to @member
+    member = Member.new member_params
+    if member.save
+      redirect_to member_path(member)
     end
   end
 

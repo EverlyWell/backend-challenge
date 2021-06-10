@@ -102,7 +102,8 @@ CREATE TABLE public.members (
     page_headings text DEFAULT ''::text,
     friend_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    state character varying DEFAULT 'initialized'::character varying
 );
 
 
@@ -225,6 +226,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210610145254'),
 ('20210610180006'),
-('20210610184232');
+('20210610184232'),
+('20210610220429');
 
 
