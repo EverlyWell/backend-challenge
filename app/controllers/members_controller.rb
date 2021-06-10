@@ -5,6 +5,9 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find params[:id]
+    @members = Member.all.includes(:friends)
+    @can_follow = @members.select { |m| m.can_follow? @member }
+    @following = @members.select { |m| m.friends.include? @member }
   end
 
   def index

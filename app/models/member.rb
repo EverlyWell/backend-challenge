@@ -4,7 +4,28 @@ class Member < ApplicationRecord
   validates :name, :url, presence: true
 
   has_many :headings
-  before_create :shorten_url, :set_page_headings
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: 'Member'
+
+  # before_create :shorten_url, :set_page_headings
+
+  def can_follow?(member)
+    self != member && !friends.include?(member)
+  end
+
+  def follow(friend)
+    self.friendships << Friendship.new(member: self, friend: friend)
+    self.increment! :friend_count
+    friend.friendships << Friendship.new(member: friend, friend: self)
+    friend.increment! :friend_count
+  end
+
+  def unfollow(friend)
+    self.friendships.where(friend: friend).destroy_all
+    self.decrement! :friend_count
+    friend.friendships.where(friend: self).destroy_all
+    friend.decrement! :friend_count
+  end
 
   private
 

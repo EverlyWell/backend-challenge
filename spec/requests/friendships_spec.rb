@@ -8,14 +8,18 @@ describe 'Friendships', type: :request do
     subject { post '/friendships', params: params.to_json, headers: headers }
 
     context 'with valid params' do
+      let!(:member) { Member.create name: 'Member', url: 'https://member-page.com' }
+      let!(:friend) { Member.create name: 'Friend', url: 'https://friend-page.com' }
+
       let(:params) do
         {
           friendship: {
-            member_id: 1,
-            friend_id: 2,
+            member_id: member.id,
+            friend_id: friend.id,
           }
         }
       end
+
 
       it 'returns the correct status code' do
         subject

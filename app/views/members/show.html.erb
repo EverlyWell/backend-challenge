@@ -2,12 +2,26 @@
 <p><%= link_to 'URL', @member.url %></p>
 <p><%= link_to 'Shortened URL', @member.shortened_url %></p>
 <p>Page headings:</p>
-<% @member.headings.each do |heading| %>
-  <% if heading.heading_type == "h1" %>
-    <h1><%= heading.text.html_safe %></h1>
-  <% elsif heading.heading_type == "h2" %>
-    <h2><%= heading.text.html_safe %></h2>
-  <% elsif heading.heading_type == "h3" %>
-    <h3><%= heading.text.html_safe %></h3>
+<ul>
+  <% @member.headings.each do |heading| %>
+    <li><%= heading.text.html_safe %></li>
+  <% end %>
+</ul>
+<p>Following: <%= "#{@member.friend_count} friends" %> <p>
+<ul>
+  <% @member.friendships.each do |friendship| %>
+    <li>
+      <%= friendship.friend.name %>
+      <%= form_with url: friendship_path(friendship), method: :delete do |form| %>
+        <%= form.submit "Unfollow" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<% @can_follow.each do |candidate| %>
+  <%= form_with model: Friendship.new, url: friendships_path do |form| %>
+    <%= form.hidden_field :member_id, value: @member.id %>
+    <%= form.hidden_field :friend_id, value: candidate.id %>
+    <%= form.submit "Follow #{candidate.name}" %>
   <% end %>
 <% end %>
