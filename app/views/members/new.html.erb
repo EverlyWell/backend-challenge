@@ -1,0 +1,6 @@
+<h1>Member registration</h1>
+<%= form_with model: @member do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :url %>
+  <%= f.submit "Register member" %>
+<% end %>
