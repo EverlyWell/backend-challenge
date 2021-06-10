@@ -1,5 +1,13 @@
-<%= form_with with: @member do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :url %>
-  <%= f.submit "Register member" %>
+<h1><%= @member.name %></h1>
+<p><%= link_to 'URL', @member.url %></p>
+<p><%= link_to 'Shortened URL', @member.shortened_url %></p>
+<p>Page headings:</p>
+<% @member.headings.each do |heading| %>
+  <% if heading.heading_type == "h1" %>
+    <h1><%= heading.text.html_safe %></h1>
+  <% elsif heading.heading_type == "h2" %>
+    <h2><%= heading.text.html_safe %></h2>
+  <% elsif heading.heading_type == "h3" %>
+    <h3><%= heading.text.html_safe %></h3>
+  <% end %>
 <% end %>
