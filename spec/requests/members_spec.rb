@@ -50,7 +50,22 @@ describe 'Members', type: :request do
 
   describe 'viewing a member' do
     context 'when member exists' do
-      subject { get "/members/#{Member.first.id}", headers: headers }
+      let(:member) { Member.create(name: 'Leigh Halliday', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres') }
+      subject { get "/members/#{member.id}", headers: headers }
+
+      before do
+        stub_request(:post, "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=firebase_key")
+          .to_return({
+            body: {
+              "shortLink": "https://backendchallenge.page.link/3hNAQkhbKcxKfFYH8"
+            }.to_json
+          })
+
+        stub_request(:get, "https://pganalyze.com/blog/full-text-search-ruby-rails-postgres")
+          .to_return({
+            body: File.new('spec/models/full-text-search-ruby-rails-postgres')
+          })
+      end
 
       it 'returns the correct status code' do
         subject

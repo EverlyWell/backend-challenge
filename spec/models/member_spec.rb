@@ -20,21 +20,24 @@ RSpec.describe Member, type: :model do
       })
   end
 
-	it "shortens the url and gets the page headings on model creation" do
-    member = Member.create name: 'Leigh Halliday', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
-    expect(member.shortened_url).to eq "https://backendchallenge.page.link/3hNAQkhbKcxKfFYH8"
-    expect(member.headings.pluck(:heading_type, :text)).to eq([
-      ["h1", "Full Text Search in Milliseconds with Rails and PostgreSQL"],
-      ["h2", "The Foundations of Full Text Search"],
-      ["h2", "Implementing Postgres Full Text Search in Rails"],
-      ["h2", "Configuring pg_search"],
-      ["h2", "Optimizing Full Text Search Queries in Rails"],
-      ["h2", "Conclusion"],
-      ["h2", "You might also be interested in"],
-      ["h2", "About the author"],
-      ["h3", "Sign up for the pganalyze newsletter"],
-      ["h3", "Get in touch"]
-    ])
+  describe "#process_url" do
+    it "shortens the url and gets the page headings on model creation" do
+      member = Member.create name: 'Leigh Halliday', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member.process_url
+      expect(member.shortened_url).to eq "https://backendchallenge.page.link/3hNAQkhbKcxKfFYH8"
+      expect(member.headings.pluck(:heading_type, :text)).to eq([
+        ["h1", "Full Text Search in Milliseconds with Rails and PostgreSQL"],
+        ["h2", "The Foundations of Full Text Search"],
+        ["h2", "Implementing Postgres Full Text Search in Rails"],
+        ["h2", "Configuring pg_search"],
+        ["h2", "Optimizing Full Text Search Queries in Rails"],
+        ["h2", "Conclusion"],
+        ["h2", "You might also be interested in"],
+        ["h2", "About the author"],
+        ["h3", "Sign up for the pganalyze newsletter"],
+        ["h3", "Get in touch"]
+      ])
+    end
   end
 
   describe "#follow" do

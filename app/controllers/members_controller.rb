@@ -8,10 +8,20 @@ class MembersController < ApplicationController
     @members = Member.all.includes(:friends)
     @can_follow = @members.select { |m| m.can_follow? @member }
     @following = @members.select { |m| m.friends.include? @member }
+
+    respond_to do |format|
+      format.json { render json: @member.to_json }
+      format.html
+    end
   end
 
   def index
     @members = Member.all.order(name: :asc)
+
+    respond_to do |format|
+      format.json { render json: @members.to_json }
+      format.html
+    end
   end
 
   def create
