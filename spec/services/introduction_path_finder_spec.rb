@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe IntroductionsPathFinder do
   before do
-		stub_request(:post, "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=firebase_key")
+    stub_request(:post, "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=firebase_key")
       .to_return({
         body: {
           "shortLink": "https://backendchallenge.page.link/3hNAQkhbKcxKfFYH8"
@@ -13,7 +13,6 @@ RSpec.describe IntroductionsPathFinder do
       .to_return({
         body: File.new('spec/models/nokogiri')
       })
-
   end
 
   describe "#adjacency_list" do
