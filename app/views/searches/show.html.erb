@@ -5,7 +5,7 @@
   <ul>
     <% @search_results.each do |member| %> 
       <li>
-        <%= member.name %> | <%= render partial: 'path', locals: { introduction_path: @finder.path_to(member) } %>
+        <%= link_to member.name, member_path(member) %> | <%= render partial: 'path', locals: { introduction_path: @finder.path_to(member) } %>
       </li>
     <% end %>
   </ul>
