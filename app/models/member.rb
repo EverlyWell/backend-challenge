@@ -39,12 +39,16 @@ class Member < ApplicationRecord
   end
 
   def search_in_non_followers(search)
+    search_query(search)
+      .group_by { |member| member.id }
+      .values.map &:first
+  end
+
+  def search_query(search)
     non_followers
       .joins("INNER JOIN headings ON members.id = headings.member_id")
       .where("headings.search_vector @@ websearch_to_tsquery('english', ?)", search)
       .select("members.*, headings.text as matching_heading")
-      .group_by { |member| member.id }
-      .values.map &:first
   end
 
   def schedule_url_processor

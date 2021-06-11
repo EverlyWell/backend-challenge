@@ -47,7 +47,7 @@ RSpec.describe IntroductionsPathFinder do
   end
 
   describe "#path_to" do
-    it "calculates introduction path", only: true do
+    it "calculates introduction path" do
       member1 = Member.create(name: 'member1', url: 'https://nokogiri.org')
       member2 = Member.create(name: 'member2', url: 'https://nokogiri.org')
       member3 = Member.create(name: 'member3', url: 'https://nokogiri.org')

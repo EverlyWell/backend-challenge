@@ -219,6 +219,13 @@ CREATE INDEX index_headings_on_member_id ON public.headings USING btree (member_
 
 
 --
+-- Name: index_headings_on_search_vector; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_headings_on_search_vector ON public.headings USING gin (search_vector);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -230,6 +237,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210610184232'),
 ('20210610220429'),
 ('20210610232618'),
-('20210611105330');
+('20210611105330'),
+('20210611191522');
 
 

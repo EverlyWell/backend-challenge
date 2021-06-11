@@ -85,5 +85,25 @@ RSpec.describe Member, type: :model do
       expect(member3.non_followers).to match_array [member1, member4]
       expect(member4.non_followers).to match_array [member1, member2, member3]
     end
+
+  end
+
+  describe "#search" do
+    skip "runs efficiently" do
+      member1 = Member.create name: 'Member 1', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member1.process_url
+
+      2.upto(1000) do |n|
+        m = Member.create name: 'Member #{n}', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+        m.process_url
+
+        member1.follow(m) if n.even?
+      end
+
+      f = Tempfile.new('explain')
+      json_plan = member1.search('Full text search').explain(analyze: true, format: :json).split("\n")
+      f.write(json_plan.slice(1, json_plan.length).join("\n"))
+      f.close
+    end
   end
 end
