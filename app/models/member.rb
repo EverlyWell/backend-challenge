@@ -89,6 +89,7 @@ class Member < ApplicationRecord
   end
 
   def save_page_headings
+    self.headings = []
     page_headings.each do |type, text|
       self.headings << Heading.new(heading_type: type, text: text)
     end

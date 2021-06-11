@@ -1,18 +1,18 @@
 <p>Following: <%= "#{member.friend_count} friends" %> <p>
-<ul>
+<ul class=list-group>
   <% member.friendships.each do |friendship| %>
-    <li>
-      <button data-action="friendships#unfollow" data-friendship-path="<%= friendship_path(friendship) %>">Unfollow</button>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
       <%= link_to friendship.friend.name, member_path(friendship.friend) %>
+      <button class="btn btn-danger btn-sm" data-action="friendships#unfollow" data-friendship-path="<%= friendship_path(friendship) %>">Unfollow</button>
     </li>
   <% end %>
 </ul>
 <p>You can follow:</p>
-<ul>
+<ul class=list-group>
   <% can_follow.each do |candidate| %>
-    <li>
-      <button data-action="friendships#follow" data-friendships-path="<%= friendships_path %>" data-member-id="<%= member.id %>" data-friend-id="<%= candidate.id %>">Follow</button>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
       <%= link_to candidate.name, member_path(candidate) %>
+      <button class="btn btn-primary btn-sm" data-action="friendships#follow" data-friendships-path="<%= friendships_path %>" data-member-id="<%= member.id %>" data-friend-id="<%= candidate.id %>">Follow</button>
     </li>
   <% end %>
 </ul>

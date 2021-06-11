@@ -1,7 +1,15 @@
 <h1>Member registration</h1>
 <%= form_with model: @member do |f| %>
-  <%= f.text_field :name, placeholder: 'Name' %>
-  <%= f.text_field :url, placeholder: 'Url' %>
-  <%= f.submit "Register member" %>
+  <div class="mb-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :url, class: 'form-label' %>
+    <%= f.text_field :url, placeholder: 'Url', class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "Register member", class: 'btn btn-primary' %>
+  </div>
 <% end %>
 <%= link_to 'Go to directory', members_path %>

@@ -1,19 +1,29 @@
 <h1><%= @member.name %></h1>
-<p><%= link_to 'URL', @member.url %></p>
-
-<div data-controller="url-data" data-url-data-state-value="<%= @member.state %>" data-url-data-url-value="<%= member_url_data_path(@member) %>">
-  <%= render partial: 'url_processing', locals: { member: @member } %>
-</div>
-
-<div data-controller="friendships">
-  <%= render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow } %>
-</div>
-<div data-controller="search" data-search-search-url-value="<%= member_searches_path(@member) %>">
-  <form>
-    <input name="topic" placeholder="Search topic" data-search-target="topic"/>
-    <input type="submit" value="Search" data-action="search#search" />
-  </form>
-  <div data-search-target="results">
+<div class="row">
+  <p><%= link_to 'URL', @member.url %></p>
+  <div class="col">
+    <div class="card" data-controller="url-data" data-url-data-state-value="<%= @member.state %>" data-url-data-url-value="<%= member_url_data_path(@member) %>">
+      <%= render partial: 'url_processing', locals: { member: @member } %>
+    </div>
+  </div>
+  <div class="col">
+    <div data-controller="search" data-search-search-url-value="<%= member_searches_path(@member) %>">
+      <form class="row">
+        <div class="col-10">
+          <input name="topic" placeholder="Search topic" class="form-control" data-search-target="topic"/>
+        </div>
+        <div class="col-2">
+          <input type="submit" value="Search" class="btn btn-primary" data-action="search#search" />
+        </div>
+      </form>
+      <div data-search-target="results">
+      </div>
+    </div>
+    <hr>
+    <div data-controller="friendships">
+      <%= render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow } %>
+    </div>
   </div>
 </div>
+
 <%= link_to 'Go to directory', members_path %>
