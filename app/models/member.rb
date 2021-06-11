@@ -9,7 +9,7 @@ class Member < ApplicationRecord
   has_many :friends, through: :friendships, class_name: 'Member'
 
   after_create :update_state_to_processing
-  after_commit :schedule_url_procesor, on: :create
+  after_commit :schedule_url_processor, on: :create
 
   attr_accessor :parent
 
@@ -42,7 +42,7 @@ class Member < ApplicationRecord
     non_followers.where("members.search_column @@ websearch_to_tsquery('english', ?)", search)
   end
 
-  def schedule_url_procesor
+  def schedule_url_processor
     UrlProcessorJob.perform_later id
   end
 
