@@ -7,7 +7,10 @@ class FriendshipsController < ApplicationController
     @member.follow @new_friend
     @can_follow = @member.non_followers
 
-    render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow }
+    respond_to do |format|
+      format.html { render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow } }
+      format.json { head :ok }
+    end
   end
 
   def destroy
