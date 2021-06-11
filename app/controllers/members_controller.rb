@@ -5,7 +5,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find params[:id]
-    @members = Member.all.includes(:friends)
+    @members = Member.all.includes(:friends).order(name: :asc)
     @can_follow = @members.select { |m| m.can_follow? @member }
     @following = @members.select { |m| m.friends.include? @member }
 

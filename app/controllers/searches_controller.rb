@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
   def show
     @member = Member.find params[:member_id]
     @topic = search_params[:topic]
-    @search_results = @member.search_in_non_followers(@topic).includes(:friends)
+    @search_results = @member.search_in_non_followers(@topic)
     @finder = IntroductionsPathFinder.new(@member)
     @finder.find_paths
   end

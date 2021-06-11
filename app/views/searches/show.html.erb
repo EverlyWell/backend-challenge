@@ -1,11 +1,11 @@
 <p>Search results for: <%= @topic %></p>
-<% if @search_results.load.size == 0 %>
+<% if @search_results.size == 0 %>
   <p>No results found</p>
 <% else %>
   <ul>
     <% @search_results.each do |member| %> 
       <li>
-        <%= link_to member.name, member_path(member) %> | <%= render partial: 'path', locals: { introduction_path: @finder.path_to(member) } %>
+        <%= link_to member.name, member_path(member) %> | <%= render partial: 'path', locals: { introduction_path: @finder.path_to(member) } %> ("<%= member.matching_heading %>")
       </li>
     <% end %>
   </ul>

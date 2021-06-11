@@ -39,7 +39,12 @@ class Member < ApplicationRecord
   end
 
   def search_in_non_followers(search)
-    non_followers.where("members.search_column @@ websearch_to_tsquery('english', ?)", search)
+    non_followers
+      .joins("INNER JOIN headings ON members.id = headings.member_id")
+      .where("headings.search_vector @@ websearch_to_tsquery('english', ?)", search)
+      .select("members.*, headings.text as matching_heading")
+      .group_by { |member| member.id }
+      .values.map &:first
   end
 
   def schedule_url_processor
@@ -49,10 +54,10 @@ class Member < ApplicationRecord
   def process_url
     shorten_url
     save_page_headings
-    update_search_vector
     update(state: 'success')
-  rescue Exception
+  rescue Exception => e
     update(state: 'error_processing_url')
+    raise e
   end
 
   def shorten_url
@@ -66,22 +71,6 @@ class Member < ApplicationRecord
                     }
                   }.to_json)
     self.shortened_url = JSON.parse(response.body)["shortLink"]
-  end
-
-  def update_search_vector
-    document = headings.map(&:text).join(" ")
-
-    # Use a prepared statement to prevent a SQL Injection
-    query = <<-SQL
-      UPDATE members SET search_column = to_tsvector('english', $1) WHERE id = $2
-    SQL
-
-    ApplicationRecord.connection.exec_query(
-      query,
-      '-- UPDATE MEMBER SEARCH --',
-      [[nil, document], [nil, id]],
-      prepare: true
-    )
   end
 
   private

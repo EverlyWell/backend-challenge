@@ -67,7 +67,8 @@ CREATE TABLE public.headings (
     text character varying DEFAULT ''::character varying,
     member_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    search_vector tsvector
 );
 
 
@@ -103,8 +104,7 @@ CREATE TABLE public.members (
     friend_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    state character varying DEFAULT 'initialized'::character varying,
-    search_column tsvector
+    state character varying DEFAULT 'initialized'::character varying
 );
 
 
@@ -229,6 +229,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210610180006'),
 ('20210610184232'),
 ('20210610220429'),
-('20210610232618');
+('20210610232618'),
+('20210611105330');
 
 
