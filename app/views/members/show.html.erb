@@ -37,4 +37,12 @@
       </li>
   <% end %>
 </ul>
+<div data-controller="search" data-search-search-url-value="<%= member_searches_path(@member) %>">
+  <form>
+    <input name="topic" placeholder="Search topic" data-search-target="topic"/>
+    <input type="submit" value="Search" data-action="search#search" />
+  </form>
+  <div data-search-target="results">
+  </div>
+</div>
 <%= link_to 'Member List', members_path %>

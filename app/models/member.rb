@@ -11,6 +11,8 @@ class Member < ApplicationRecord
   after_create :update_state_to_processing
   after_commit :schedule_url_procesor, on: :create
 
+  attr_accessor :parent
+
   def can_follow?(member)
     self != member && !friends.include?(member)
   end
@@ -37,7 +39,7 @@ class Member < ApplicationRecord
   end
 
   def search_in_non_followers(search)
-    non_followers.where("non_followers.search_column @@ websearch_to_tsquery('english', ?)", search)
+    non_followers.where("members.search_column @@ websearch_to_tsquery('english', ?)", search)
   end
 
   def schedule_url_procesor

@@ -1,0 +1,12 @@
+<p>Search results for: <%= @topic %></p>
+<% if @search_results.load.size == 0 %>
+  <p>No results found</p>
+<% else %>
+  <ul>
+    <% @search_results.each do |member| %> 
+      <li>
+        <%= member.name %> | <%= render partial: 'path', locals: { introduction_path: @finder.path_to(member) } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,5 @@
+<% if introduction_path.empty? %>
+  No path found
+<% else %>
+  <%= introduction_path.map { |m| link_to m.name, member_path(m) }.join('->').html_safe %>
+<% end %>
