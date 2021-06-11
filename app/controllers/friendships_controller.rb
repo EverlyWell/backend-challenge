@@ -1,21 +1,23 @@
 class FriendshipsController < ApplicationController
+  layout "friendships"
+
   def create
     @member = Member.find friendship_params[:member_id]
     @new_friend = Member.find friendship_params[:friend_id]
     @member.follow @new_friend
+    @can_follow = @member.non_followers
 
-    respond_to do |format|
-      format.json { head :ok }
-      format.html { redirect_to member_path(@member) }
-    end
+    render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow }
   end
 
   def destroy
     friendship = Friendship.find(params[:id])
-    member = friendship.member
+    @member = friendship.member
     friend = friendship.friend
-    member.unfollow friend
-    redirect_to member_path(member)
+    @member.unfollow friend
+    @can_follow = @member.non_followers
+
+    render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow }
   end
 
   private

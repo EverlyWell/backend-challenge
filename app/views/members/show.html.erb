@@ -13,30 +13,11 @@
 <% elsif @member.state == 'error_processing_url' %>
   <p>Could not process the member URL</p>
 <% end %>
-<p>Following: <%= "#{@member.friend_count} friends" %> <p>
-<ul>
-  <% @member.friendships.each do |friendship| %>
-    <li>
-      <%= link_to friendship.friend.name, member_path(friendship.friend) %>
-      <%= form_with url: friendship_path(friendship), method: :delete do |form| %>
-        <%= form.submit "Unfollow" %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-<p>You can follow:</p>
-<ul>
-  <% @can_follow.each do |candidate| %>
-    <li>
-      <%= link_to candidate.name, member_path(candidate) %>
-      <%= form_with model: Friendship.new, url: friendships_path do |form| %>
-        <%= form.hidden_field :member_id, value: @member.id %>
-        <%= form.hidden_field :friend_id, value: candidate.id %>
-        <%= form.submit "Follow" %>
-      <% end %>
-      </li>
-  <% end %>
-</ul>
+
+<div data-controller="friendships">
+  <%= render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow } %>
+</div>
+
 <div data-controller="search" data-search-search-url-value="<%= member_searches_path(@member) %>">
   <form>
     <input name="topic" placeholder="Search topic" data-search-target="topic"/>
