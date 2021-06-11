@@ -17,7 +17,7 @@
 <ul>
   <% @member.friendships.each do |friendship| %>
     <li>
-      <%= friendship.friend.name %>
+      <%= link_to friendship.friend.name, member_path(friendship.friend) %>
       <%= form_with url: friendship_path(friendship), method: :delete do |form| %>
         <%= form.submit "Unfollow" %>
       <% end %>
@@ -28,7 +28,7 @@
 <ul>
   <% @can_follow.each do |candidate| %>
     <li>
-      <%= candidate.name %>
+      <%= link_to candidate.name, member_path(candidate) %>
       <%= form_with model: Friendship.new, url: friendships_path do |form| %>
         <%= form.hidden_field :member_id, value: @member.id %>
         <%= form.hidden_field :friend_id, value: candidate.id %>
@@ -37,3 +37,4 @@
       </li>
   <% end %>
 </ul>
+<%= link_to 'Member List', members_path %>

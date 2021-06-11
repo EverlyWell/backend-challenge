@@ -29,14 +29,28 @@ class Member < ApplicationRecord
     friend.decrement! :friend_count
   end
 
+  def non_followers
+    Member
+      .joins("CROSS JOIN members as friends")
+      .joins("LEFT JOIN friendships ON members.id = friendships.member_id AND friendships.friend_id = friends.id")
+      .where("friends.id = ? AND members.id <> ? AND friendships.id IS NULL", id, id)
+  end
+
+  def search_in_non_followers(search)
+    non_followers.where("non_followers.search_column @@ websearch_to_tsquery('english', ?)", search)
+  end
+
   def schedule_url_procesor
     UrlProcessorJob.perform_later id
   end
 
   def process_url
     shorten_url
-    get_page_headings
+    save_page_headings
+    update_search_vector
     update(state: 'success')
+  rescue Exception
+    update(state: 'error_processing_url')
   end
 
   def shorten_url
@@ -52,6 +66,22 @@ class Member < ApplicationRecord
     self.shortened_url = JSON.parse(response.body)["shortLink"]
   end
 
+  def update_search_vector
+    document = headings.map(&:text).join(" ")
+
+    # Use a prepared statement to prevent a SQL Injection
+    query = <<-SQL
+      UPDATE members SET search_column = to_tsvector('english', $1) WHERE id = $2
+    SQL
+
+    ApplicationRecord.connection.exec_query(
+      query,
+      '-- UPDATE MEMBER SEARCH --',
+      [[nil, document], [nil, id]],
+      prepare: true
+    )
+  end
+
   private
 
   def update_state_to_processing
@@ -63,7 +93,7 @@ class Member < ApplicationRecord
     @headings ||= @doc.css('h1, h2, h3').map { |heading| [heading.name, heading.text] }
   end
 
-  def get_page_headings
+  def save_page_headings
     page_headings.each do |type, text|
       self.headings << Heading.new(heading_type: type, text: text)
     end

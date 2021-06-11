@@ -69,4 +69,21 @@ RSpec.describe Member, type: :model do
       expect(member2.friend_count).to eq 0
     end
   end
+
+  describe "#non_followers" do
+    it "returns members that are not followers" do
+      member1 = Member.create name: 'Member 1', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member2 = Member.create name: 'Member 2', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member3 = Member.create name: 'Member 3', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member4 = Member.create name: 'Member 4', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+
+      member1.follow(member2)
+      member2.follow(member3)
+
+      expect(member1.non_followers).to match_array [member3, member4]
+      expect(member2.non_followers).to match_array [member4]
+      expect(member3.non_followers).to match_array [member1, member4]
+      expect(member4.non_followers).to match_array [member1, member2, member3]
+    end
+  end
 end

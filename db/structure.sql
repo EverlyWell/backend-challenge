@@ -103,7 +103,8 @@ CREATE TABLE public.members (
     friend_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    state character varying DEFAULT 'initialized'::character varying
+    state character varying DEFAULT 'initialized'::character varying,
+    search_column tsvector
 );
 
 
@@ -227,6 +228,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210610145254'),
 ('20210610180006'),
 ('20210610184232'),
-('20210610220429');
+('20210610220429'),
+('20210610232618');
 
 
