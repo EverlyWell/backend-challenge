@@ -1,6 +1,7 @@
 <h1>Member registration</h1>
 <%= form_with model: @member do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :url %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :url, placeholder: 'Url' %>
   <%= f.submit "Register member" %>
 <% end %>
+<%= link_to 'Go to directory', members_path %>

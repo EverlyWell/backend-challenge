@@ -1,0 +1,14 @@
+<% if member.state == 'processing_url' %>
+  <p>Processing member URL</p>
+  <%= image_tag "/wait.webp" %>
+<% elsif member.state == 'success' %>
+  <p><%= link_to 'Shortened URL', member.shortened_url %></p>
+  <p>Page headings:</p>
+  <ul>
+    <% member.headings.each do |heading| %>
+      <li><%= heading.text.html_safe %></li>
+    <% end %>
+  </ul>
+<% elsif member.state == 'error_processing_url' %>
+  <p>Could not process the member URL</p>
+<% end %>

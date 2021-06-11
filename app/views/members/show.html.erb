@@ -1,23 +1,13 @@
 <h1><%= @member.name %></h1>
 <p><%= link_to 'URL', @member.url %></p>
-<% if @member.state == 'processing_url' %>
-  <p>Processing member URL</p>
-<% elsif @member.state == 'success' %>
-  <p><%= link_to 'Shortened URL', @member.shortened_url %></p>
-  <p>Page headings:</p>
-  <ul>
-    <% @member.headings.each do |heading| %>
-      <li><%= heading.text.html_safe %></li>
-    <% end %>
-  </ul>
-<% elsif @member.state == 'error_processing_url' %>
-  <p>Could not process the member URL</p>
-<% end %>
+
+<div data-controller="url-data" data-url-data-state-value="<%= @member.state %>" data-url-data-url-value="<%= member_url_data_path(@member) %>">
+  <%= render partial: 'url_processing', locals: { member: @member } %>
+</div>
 
 <div data-controller="friendships">
   <%= render partial: 'friendships/friendships', locals: { member: @member, can_follow: @can_follow } %>
 </div>
-
 <div data-controller="search" data-search-search-url-value="<%= member_searches_path(@member) %>">
   <form>
     <input name="topic" placeholder="Search topic" data-search-target="topic"/>
@@ -26,4 +16,4 @@
   <div data-search-target="results">
   </div>
 </div>
-<%= link_to 'Member List', members_path %>
+<%= link_to 'Go to directory', members_path %>
