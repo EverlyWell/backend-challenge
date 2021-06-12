@@ -18,17 +18,24 @@ class Member < ApplicationRecord
   end
 
   def follow(friend)
-    self.friendships << Friendship.new(member: self, friend: friend)
-    self.increment! :friend_count
-    friend.friendships << Friendship.new(member: friend, friend: self)
-    friend.increment! :friend_count
+    transaction do
+      self.friendships << Friendship.new(member: self, friend: friend)
+      self.increment! :friend_count
+      friend.friendships << Friendship.new(member: friend, friend: self)
+      friend.increment! :friend_count
+    end
   end
 
   def unfollow(friend)
-    self.friendships.where(friend: friend).destroy_all
-    self.decrement! :friend_count
-    friend.friendships.where(friend: self).destroy_all
-    friend.decrement! :friend_count
+    transaction do
+      Friendship
+        .where(member: self, friend: friend)
+        .or(Friendship.where(member: friend, friend: self))
+        .delete_all
+
+      self.decrement! :friend_count
+      friend.decrement! :friend_count
+    end
   end
 
   def non_followers
