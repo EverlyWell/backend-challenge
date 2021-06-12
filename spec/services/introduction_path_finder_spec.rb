@@ -65,12 +65,9 @@ RSpec.describe IntroductionsPathFinder do
       member5.follow(member7)
 
       finder = IntroductionsPathFinder.new(member1)
-      finder.find_paths
       expect(finder.path_to(member6).map(&:name)).to eq ['member3', 'member5', 'member6']
 
       finder = IntroductionsPathFinder.new(member2)
-      finder.find_paths
-
       expect(finder.path_to(member7).map(&:name)).to eq ['member4', 'member3', 'member5', 'member7']
     end
   end

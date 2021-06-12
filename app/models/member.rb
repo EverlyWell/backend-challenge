@@ -11,7 +11,7 @@ class Member < ApplicationRecord
   after_create :update_state_to_processing
   after_commit :schedule_url_processor, on: :create
 
-  attr_accessor :parent
+  attr_accessor :introduction_path
 
   def can_follow?(member)
     self != member && !friends.include?(member)

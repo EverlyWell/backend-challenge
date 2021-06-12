@@ -6,7 +6,6 @@ class SearchesController < ApplicationController
     @topic = search_params[:topic]
     @search_results = @member.search_in_non_followers(@topic)
     @finder = IntroductionsPathFinder.new(@member)
-    @finder.find_paths
   end
 
   private
