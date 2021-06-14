@@ -212,6 +212,13 @@ CREATE INDEX index_friendships_on_member_id ON public.friendships USING btree (m
 
 
 --
+-- Name: index_friendships_on_member_id_and_friend_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_friendships_on_member_id_and_friend_id ON public.friendships USING btree (member_id, friend_id);
+
+
+--
 -- Name: index_headings_on_member_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -238,6 +245,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210610220429'),
 ('20210610232618'),
 ('20210611105330'),
-('20210611191522');
+('20210611191522'),
+('20210612230141');
 
 

@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
   resources :members do
+    resources :friendships, only: :destroy
     resource :searches, only: :show
     resource :url_data, only: :show
   end
 
-  resources :friendships
+  resources :friendships, only: :create
 end

@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Member < ApplicationRecord
   validates :name, :url, presence: true
   validates :state, inclusion: ["initialized", "processing_url", "success", "error_processing_url"]
@@ -11,31 +9,37 @@ class Member < ApplicationRecord
   after_create :update_state_to_processing
   after_commit :schedule_url_processor, on: :create
 
-  attr_accessor :introduction_path
+  scope :processed, -> { where(state: 'success').order(name: :asc) }
 
-  def can_follow?(member)
-    self != member && !friends.include?(member)
-  end
+  attr_accessor :introduction_path
 
   def follow(friend)
     transaction do
-      self.friendships << Friendship.new(member: self, friend: friend)
+      self.friendships.create! member: self, friend: friend
       self.increment! :friend_count
-      friend.friendships << Friendship.new(member: friend, friend: self)
+      friend.friendships.create! member: friend, friend: self
       friend.increment! :friend_count
     end
+  rescue ActiveRecord::RecordInvalid
   end
 
   def unfollow(friend)
-    transaction do
-      Friendship
+    # If the user clicks the "Unfollow" button fast enough, the
+    # backend will get many requests that can cause a race condition
+    # in which the friend count gets out of sync. Locking the member
+    # prevents it.
+    with_lock do
+      ndeleted = Friendship
         .where(member: self, friend: friend)
         .or(Friendship.where(member: friend, friend: self))
         .delete_all
 
+      raise StandardError.new if ndeleted.zero?
+
       self.decrement! :friend_count
       friend.decrement! :friend_count
     end
+  rescue StandardError
   end
 
   def non_followers
@@ -47,8 +51,8 @@ class Member < ApplicationRecord
 
   def search_in_non_followers(search)
     search_query(search)
-      .group_by { |member| member.id }
-      .values.map &:first
+      .group_by(&:id)
+      .values.map(&:first)
   end
 
   def search_query(search)
@@ -91,7 +95,8 @@ class Member < ApplicationRecord
   end
 
   def page_headings
-    @doc ||= Nokogiri::HTML(HTTParty.get(url))
+    response = HTTParty.get(url)
+    @doc ||= Nokogiri::HTML(response.body)
     @headings ||= @doc.css('h1, h2, h3').map { |heading| [heading.name, heading.text] }
   end
 

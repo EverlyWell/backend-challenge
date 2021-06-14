@@ -6,7 +6,9 @@ export default class extends Controller {
 
     connect() {
         const self = this;
+
         if(this.stateValue == 'processing_url') {
+            this.load();
             this.timer = setInterval(() => {
                 this.load()
             }, 1000);

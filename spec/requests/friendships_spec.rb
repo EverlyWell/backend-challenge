@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Friendships', type: :request do
   let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
+  let(:headers) { { 'Content-Type' => 'application/json' } }
 
   describe 'creating a friendship' do
     subject { post '/friendships', params: params.to_json, headers: headers }

@@ -5,10 +5,6 @@ export default class extends Controller {
     static targets = ["topic", "results"]
     static values = { searchUrl: String }
 
-    connect() {
-        console.log("connected search controller")
-    }
-
     search(e) {
         let self = this;
         e.preventDefault()

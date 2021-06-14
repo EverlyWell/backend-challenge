@@ -53,6 +53,17 @@ RSpec.describe Member, type: :model do
       expect(member2.friends).to eq [member1]
       expect(member2.friend_count).to eq 1
     end
+
+    it "doesn't throw if you try to follow the same user" do
+      member1 = Member.create name: 'Leigh Halliday', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member2 = Member.create name: 'Nokogiri', url: 'https://nokogiri.org/'
+
+      member1.follow(member2)
+      member1.follow(member2)
+
+      expect(member1.reload.friend_count).to eq 1
+      expect(member2.reload.friend_count).to eq 1
+    end
   end
 
   describe "#unfollow" do
@@ -67,6 +78,16 @@ RSpec.describe Member, type: :model do
       expect(member1.friend_count).to eq 0
       expect(member2.reload.friends).to eq []
       expect(member2.friend_count).to eq 0
+    end
+
+    it "doesn't throw if you try to unfollow a user you are not following" do
+      member1 = Member.create name: 'Leigh Halliday', url: 'https://pganalyze.com/blog/full-text-search-ruby-rails-postgres'
+      member2 = Member.create name: 'Nokogiri', url: 'https://nokogiri.org/'
+
+      member1.unfollow(member2)
+
+      expect(member1.reload.friend_count).to be_zero
+      expect(member2.reload.friend_count).to be_zero
     end
   end
 
@@ -101,7 +122,7 @@ RSpec.describe Member, type: :model do
       end
 
       f = Tempfile.new('explain')
-      json_plan = member1.search('Full text search').explain(analyze: true, format: :json).split("\n")
+      json_plan = member1.search_query('Full text search').explain(analyze: true, format: :json).split("\n")
       f.write(json_plan.slice(1, json_plan.length).join("\n"))
       f.close
     end

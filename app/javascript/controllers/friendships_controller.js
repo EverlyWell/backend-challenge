@@ -1,10 +1,6 @@
 import { Controller } from 'stimulus'; 
 
 export default class extends Controller {
-    connect() {
-        console.log("connected friendships controller")
-    }
-
     unfollow(e) {
         const self = this;
         const url = e.currentTarget.dataset.friendshipPath;
