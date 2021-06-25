@@ -23,11 +23,17 @@ describe 'Members', type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it 'Generates a shortened link for the url' do
+      it 'generates a shortened link for the url' do
         subject
         json = JSON.parse(response.body)
         expect(json["url"]).to eq "http://www.example.com"
         expect(json["short_url"]).to match(/https:\/\/bit.ly/)
+      end
+
+      it 'pulls headings from member website' do
+        subject
+        json = JSON.parse(response.body)
+        expect(json["headings"]).to eq ["Example Domain"]
       end
     end
 

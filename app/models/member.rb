@@ -9,7 +9,10 @@ class Member < ApplicationRecord
   # this.
   scope :ordered, -> { order(last_name: :asc) }
 
+  serialize :headings
+
   before_create :generate_short_url
+  before_create :pull_website_headings
 
   private
 
@@ -24,5 +27,10 @@ class Member < ApplicationRecord
     return unless url.present?
 
     self.short_url = UrlShortenerService.new.short_url_for(url)
+  end
+
+  def pull_website_headings
+    # Same comments as above, in production we should be using a Job queue.
+    self.headings = WebsiteHeadingsService.new.headings_for_url(url)
   end
 end
