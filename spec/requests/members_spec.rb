@@ -22,6 +22,13 @@ describe 'Members', type: :request do
         subject
         expect(response).to have_http_status(:success)
       end
+
+      it 'Generates a shortened link for the url' do
+        subject
+        json = JSON.parse(response.body)
+        expect(json["url"]).to eq "http://www.example.com"
+        expect(json["short_url"]).to match(/https:\/\/bit.ly/)
+      end
     end
 
     context 'with missing params' do
