@@ -51,8 +51,7 @@ describe 'Members', type: :request do
   describe 'viewing a member' do
     context 'when member exists' do
       before do
-        Member.create(first_name: "Test", last_name: "Member",
-                      url: "http://example.com")
+        create(:member) # Factory defined in spec/factories/member.rb
       end
 
       subject { get "/members/#{Member.first.id}", headers: headers }
@@ -60,6 +59,14 @@ describe 'Members', type: :request do
       it 'returns the correct status code' do
         subject
         expect(response).to have_http_status(:success)
+      end
+
+      it 'returns member attributes' do
+        subject
+        json = JSON.parse(response.body)
+        expect(json["first_name"]).to eq "Test"
+        expect(json["last_name"]).to eq "Member"
+        expect(json["url"]).to eq "http://www.example.com"
       end
     end
 
