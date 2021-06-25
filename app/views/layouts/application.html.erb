@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>backend challenge</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    body {
+      padding: 1em 2em;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+  </body>
+</html>

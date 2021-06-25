@@ -6,7 +6,10 @@
 #   GET /members/:id
 class MembersController < ApplicationController
   def index
-    render json: Member.ordered
+    respond_to do |format|
+      format.html { render :index, locals: { members: Member.ordered } }
+      format.json { render json: Member.ordered }
+    end
   end
 
   def show
@@ -18,12 +21,22 @@ class MembersController < ApplicationController
     end
   end
 
+  def new
+    render :new, locals: { member: Member.new(url: "http://www.example.com") }
+  end
+
   def create
     member = Member.new(member_params)
     if member.save
-      render json: member, status: :ok
+      respond_to do |format|
+        format.html { redirect_to members_path }
+        format.json { render json: member, status: :ok }
+      end
     else
-      render json: member, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, locals: { member: member } }
+        format.json { render json: member, status: :unprocessable_entity }
+      end
     end
   end
 

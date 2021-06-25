@@ -1,0 +1,21 @@
+<h1>New member</h1>
+<%= form_for member, html: { class: "pure-form pure-form-aligned" } do |form| %>
+  <fieldset>
+    <div class="pure-control-group">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+    <div class="pure-control-group">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+    <div class="pure-control-group">
+      <%= form.label :url %>
+      <%= form.text_field :url, placeholder: "Enter a valid address" %>
+      <span class="pure-form-message-inline">Enter a valid address</span>
+    </div>
+    <div class="pure-controls">
+      <button type="submit" class="pure-button pure-button-primary">Create member</button>
+    </div>
+  </fieldset>
+<% end %>

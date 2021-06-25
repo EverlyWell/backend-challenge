@@ -1,0 +1,28 @@
+
+<h1>Members</h1>
+<%= link_to "Add new member", new_member_path, class: "pure-button pure-button-primary" %>
+
+<br><br>
+
+<table class="pure-table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Shortened URL</th>
+      <th>Number of friends</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% members.each do |member| %>
+      <tr>
+        <td><%= member.first_name %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.short_url %></td>
+        <td><%= member.friendships.count %></td>
+        <td>Details</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
