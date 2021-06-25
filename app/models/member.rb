@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Member < ApplicationRecord
+  has_many :friendships
+
   validates :first_name, :last_name, presence: true
   validates :url, url: true # Via gem validate_url
 
