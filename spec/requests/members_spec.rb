@@ -50,6 +50,11 @@ describe 'Members', type: :request do
 
   describe 'viewing a member' do
     context 'when member exists' do
+      before do
+        Member.create(first_name: "Test", last_name: "Member",
+                      url: "http://example.com")
+      end
+
       subject { get "/members/#{Member.first.id}", headers: headers }
 
       it 'returns the correct status code' do
