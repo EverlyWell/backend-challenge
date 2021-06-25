@@ -22,6 +22,13 @@ describe 'Members', type: :request do
         subject
         expect(response).to have_http_status(:success)
       end
+
+      it 'Generates a shortened link for the url' do
+        subject
+        json = JSON.parse(response.body)
+        expect(json["url"]).to eq "http://www.example.com"
+        expect(json["short_url"]).to match(/https:\/\/bit.ly/)
+      end
     end
 
     context 'with missing params' do
@@ -50,11 +57,23 @@ describe 'Members', type: :request do
 
   describe 'viewing a member' do
     context 'when member exists' do
+      before do
+        create(:member) # Factory defined in spec/factories/member.rb
+      end
+
       subject { get "/members/#{Member.first.id}", headers: headers }
 
       it 'returns the correct status code' do
         subject
         expect(response).to have_http_status(:success)
+      end
+
+      it 'returns member attributes' do
+        subject
+        json = JSON.parse(response.body)
+        expect(json["first_name"]).to eq "Test"
+        expect(json["last_name"]).to eq "Member"
+        expect(json["url"]).to eq "http://www.example.com"
       end
     end
 
