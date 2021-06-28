@@ -74,3 +74,4 @@ We encourage the use of any libraries for everything except the search functiona
         
 1. [Make a copy](https://docs.google.com/spreadsheets/u/0/d/1t6aY1dpVv4jEG1Xq2x5DHkQrXNsMrJfn_fhdSZM6C_8/copy) of the rubric and fill it in
 1. Ensure that the requests specs are the same or improved
+1. Add a short summary to the Rubric and share it in our engineering-coding-projects Slack channel  
