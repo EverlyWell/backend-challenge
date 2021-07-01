@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.example.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '213036'
+      Cache-Control:
+      - max-age=604800
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Thu, 01 Jul 2021 03:12:07 GMT
+      Etag:
+      - '"3147526947"'
+      Expires:
+      - Thu, 08 Jul 2021 03:12:07 GMT
+      Last-Modified:
+      - Thu, 17 Oct 2019 07:18:26 GMT
+      Server:
+      - ECS (qro/9315)
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - HIT
+      Content-Length:
+      - '648'
+    body:
+      encoding: ASCII-8BIT
+      string: "<!doctype html>\n<html>\n<head>\n    <title>Example Domain</title>\n\n
+        \   <meta charset=\"utf-8\" />\n    <meta http-equiv=\"Content-type\" content=\"text/html;
+        charset=utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1\" />\n    <style type=\"text/css\">\n    body {\n        background-color:
+        #f0f0f2;\n        margin: 0;\n        padding: 0;\n        font-family: -apple-system,
+        system-ui, BlinkMacSystemFont, \"Segoe UI\", \"Open Sans\", \"Helvetica Neue\",
+        Helvetica, Arial, sans-serif;\n        \n    }\n    div {\n        width:
+        600px;\n        margin: 5em auto;\n        padding: 2em;\n        background-color:
+        #fdfdff;\n        border-radius: 0.5em;\n        box-shadow: 2px 3px 7px 2px
+        rgba(0,0,0,0.02);\n    }\n    a:link, a:visited {\n        color: #38488f;\n
+        \       text-decoration: none;\n    }\n    @media (max-width: 700px) {\n        div
+        {\n            margin: 0 auto;\n            width: auto;\n        }\n    }\n
+        \   </style>    \n</head>\n\n<body>\n<div>\n    <h1>Example Domain</h1>\n
+        \   <p>This domain is for use in illustrative examples in documents. You may
+        use this\n    domain in literature without prior coordination or asking for
+        permission.</p>\n    <p><a href=\"https://www.iana.org/domains/example\">More
+        information...</a></p>\n</div>\n</body>\n</html>\n"
+  recorded_at: Thu, 01 Jul 2021 03:12:07 GMT
+- request:
+    method: post
+    uri: https://api-ssl.bitly.com/v4/shorten
+    body:
+      encoding: UTF-8
+      string: '{"long_url":"http://www.example.com"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby Bitly/2.0.1
+      Authorization:
+      - Bearer 13acd912b625757a252ac704d78b5b972084b848
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 01 Jul 2021 03:12:07 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '268'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Xss-Protection:
+      - 1; mode=blockFilter
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      Content-Security-Policy:
+      - default-src 'none
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: '{"created_at":"2021-07-01T03:12:07+0000","id":"bit.ly/366oRup","link":"https://bit.ly/366oRup","custom_bitlinks":[],"long_url":"http://www.example.com/","archived":false,"tags":[],"deeplinks":[],"references":{"group":"https://api-ssl.bitly.com/v4/groups/Bf7u7UMY0PG"}}'
+  recorded_at: Thu, 01 Jul 2021 03:12:07 GMT
+recorded_with: VCR 6.0.0
