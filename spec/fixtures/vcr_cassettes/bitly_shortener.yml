@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-ssl.bitly.com/v4/shorten
+    body:
+      encoding: UTF-8
+      string: '{"long_url":"https://ignacio.al/"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby Bitly/2.0.1
+      Authorization:
+      - Bearer 13acd912b625757a252ac704d78b5b972084b848
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 01 Jul 2021 01:54:56 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '264'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Xss-Protection:
+      - 1; mode=blockFilter
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      Content-Security-Policy:
+      - default-src 'none
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: '{"created_at":"2021-07-01T01:54:56+0000","id":"bit.ly/3wd8Opk","link":"https://bit.ly/3wd8Opk","custom_bitlinks":[],"long_url":"https://ignacio.al/","archived":false,"tags":[],"deeplinks":[],"references":{"group":"https://api-ssl.bitly.com/v4/groups/Bf7u7UMY0PG"}}'
+  recorded_at: Thu, 01 Jul 2021 01:54:56 GMT
+- request:
+    method: post
+    uri: https://api-ssl.bitly.com/v4/shorten
+    body:
+      encoding: UTF-8
+      string: '{"long_url":"https://ignacio.al/"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby Bitly/2.0.1
+      Authorization:
+      - Bearer 13acd912b625757a252ac704d78b5b972084b848
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 01 Jul 2021 01:54:56 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '264'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Xss-Protection:
+      - 1; mode=blockFilter
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      Content-Security-Policy:
+      - default-src 'none
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+    body:
+      encoding: UTF-8
+      string: '{"created_at":"2021-07-01T01:54:56+0000","id":"bit.ly/3wd8Opk","link":"https://bit.ly/3wd8Opk","custom_bitlinks":[],"long_url":"https://ignacio.al/","archived":false,"tags":[],"deeplinks":[],"references":{"group":"https://api-ssl.bitly.com/v4/groups/Bf7u7UMY0PG"}}'
+  recorded_at: Thu, 01 Jul 2021 01:54:56 GMT
+recorded_with: VCR 6.0.0

@@ -12,13 +12,29 @@ gem 'rails', '~> 6.1.4'
 gem 'pg'
 gem 'puma'
 
+# HTML/XML Parsing
+gem 'nokogiri'
+
+# URL shortening service
+gem 'bitly'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'pry-byebug'
+  gem 'database_cleaner'
+  gem 'dotenv-rails'
 end
 
 group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
