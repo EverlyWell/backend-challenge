@@ -1,5 +1,10 @@
 class Member < ApplicationRecord
   has_many :headings
+  has_many :friendships, ->(member) do 
+    where("member_id = ? OR friend_id = ?", member.id, member.id)
+  end
+
+  has_many :friends, through: :friendships
 
   validates :first_name, :last_name, :url, presence: true 
 
