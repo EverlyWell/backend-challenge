@@ -3,6 +3,8 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'rspec/rails'
+require 'database_cleaner'
+require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -16,7 +18,20 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.ignore_localhost     = true
+  config.hook_into :webmock
+end
+
+
 RSpec.configure do |config|
+
+  config.add_setting(
+    :vcr_record_mode,
+    default: :new_episodes, # :all, :none
+    alias_with: :vcr_record_mode
+  )
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
