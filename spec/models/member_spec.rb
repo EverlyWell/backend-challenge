@@ -5,8 +5,8 @@ describe Member, type: :model do
     it { is_expected.to be_valid }
   end
 
-  xdescribe 'associations' do
-    
+  describe 'associations' do
+    it { is_expected.to have_many(:headings) }
   end
 
   describe 'validations' do
