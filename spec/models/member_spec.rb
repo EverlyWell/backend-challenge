@@ -7,6 +7,8 @@ describe Member, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:headings) }
+    it { is_expected.to have_many(:friendships) }
+    it { is_expected.to have_many(:friends).through(:friendships) }
   end
 
   describe 'validations' do
