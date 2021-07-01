@@ -1,6 +1,11 @@
 describe 'Friendships', type: :request do
+  let(:member) { create(:member) }
+  let(:friend) { create(:member) }
+
   let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
+  let(:headers) do 
+    { "Accept" => "application/json", 'Content-Type' => 'application/json' }
+  end
 
   describe 'creating a friendship' do
     subject { post '/friendships', params: params.to_json, headers: headers }
@@ -9,8 +14,8 @@ describe 'Friendships', type: :request do
       let(:params) do
         {
           friendship: {
-            member_id: 1,
-            friend_id: 2,
+            member_id: member.id,
+            friend_id: friend.id,
           }
         }
       end
