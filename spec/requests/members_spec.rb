@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Members', type: :request do
   let(:body) { JSON.parse(response.body) }
   let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
