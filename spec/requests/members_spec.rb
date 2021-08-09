@@ -37,6 +37,8 @@ describe 'Members', type: :request do
   describe 'viewing all members' do
     subject { get '/members', headers: headers }
 
+    Member.create(first_name: "Sandi", last_name: "Metz", url: "http://www.exmaple.com")
+
     it 'returns the correct status code' do
       subject
       expect(response).to have_http_status(:success)
@@ -44,7 +46,7 @@ describe 'Members', type: :request do
 
     it 'returns an array' do
       subject
-      expect(body).to be_an_instance_of(Array)
+      expect(body["data"]).to be_an_instance_of(Array)
     end
   end
 
