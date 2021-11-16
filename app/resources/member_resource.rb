@@ -3,7 +3,7 @@ class MemberResource < JSONAPI::Resource
   relationship :friendships, to: :many
 
   def short_url
-    "http://goo.gl/#{@model.id.to_s}"
+    "http://#{ENV.fetch('HOST', 'localhost:3000')}/su/#{@model.id.to_s}"
   end
 
   filter :profile_metadata

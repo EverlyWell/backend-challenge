@@ -55,12 +55,19 @@ describe 'Members', type: :request do
     before do
       Member.create!(first_name: 'foo', last_name: 'bar', url: 'https://en.wikipedia.org/wiki/Foobar')
     end
+
     context 'when member exists' do
-      subject { get "/members/#{Member.first.id}", headers: headers }
+      let(:member) { Member.first }
+
+      subject { get "/members/#{member.id}", headers: headers }
 
       it 'returns the correct status code' do
         subject
         expect(response).to have_http_status(:success)
+      end
+
+      it 'can redirect to url through shortener' do
+        expect(get "/su/#{member.id}").to redirect_to member.url
       end
     end
 

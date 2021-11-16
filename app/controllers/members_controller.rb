@@ -18,6 +18,11 @@ class MembersController < ApplicationController
     @member.destroy
   end
 
+  def short_url_redirect
+    @member = Member.find(params[:member_id])
+    redirect_to  @member.url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
