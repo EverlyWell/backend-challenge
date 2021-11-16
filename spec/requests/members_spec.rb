@@ -49,6 +49,9 @@ describe 'Members', type: :request do
   end
 
   describe 'viewing a member' do
+    before do
+      Member.create!(first_name: 'foo', last_name: 'bar', url: 'foo.bar')
+    end
     context 'when member exists' do
       subject { get "/members/#{Member.first.id}", headers: headers }
 
