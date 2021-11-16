@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Members', type: :request do
   let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
+  let(:headers) { { "Accept" => "application/vnd.api+json", 'Content-Type' => 'application/vnd.api+json' } }
 
   describe 'creating a member' do
     subject { post '/members', params: params.to_json, headers: headers }
@@ -10,10 +10,13 @@ describe 'Members', type: :request do
     context 'with valid params' do
       let(:params) do
         {
-          member: {
-            first_name: 'Sandi',
-            last_name: 'Metz',
-            url: 'http://www.example.com'
+          data: {
+            type: 'members',
+            attributes: {
+              'first-name' => 'Sandi',
+              'last-name' => 'Metz',
+              'url' => 'http://www.example.com'
+            }
           }
         }
       end
@@ -44,7 +47,7 @@ describe 'Members', type: :request do
 
     it 'returns an array' do
       subject
-      expect(body).to be_an_instance_of(Array)
+      expect(body['data']).to be_an_instance_of(Array)
     end
   end
 

@@ -1,28 +1,8 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :update, :destroy]
+  before_action :set_member, only: [:update, :destroy]
 
-  # GET /members
-  def index
-    @members = Member.all
-
-    render json: @members
-  end
-
-  # GET /members/1
-  def show
-    render json: @member
-  end
-
-  # POST /members
-  def create
-    @member = Member.new(member_params)
-
-    if @member.save
-      render json: @member, status: :created, location: @member
-    else
-      render json: @member.errors, status: :unprocessable_entity
-    end
-  end
+  # SHOW/INDEX/CREATE replaced by standardized jsonapi-resources gem actions:
+  # https://github.com/cerebris/jsonapi-resources/blob/master/lib/jsonapi/acts_as_resource_controller.rb#L18
 
   # PATCH/PUT /members/1
   def update

@@ -1,18 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: [:show, :update, :destroy]
 
-  # GET /friendships
-  def index
-    @friendships = Friendship.all
-
-    render json: @friendships
-  end
-
-  # GET /friendships/1
-  def show
-    render json: @friendship
-  end
-
   # POST /friendships
   def create
     @friendship = Friendship.new(friendship_params)
@@ -46,6 +34,6 @@ class FriendshipsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def friendship_params
-      params.require(:friendship).permit(:member_id, :friendship_id)
+      params.require(:friendship).permit(:member_id, :friend_id)
     end
 end

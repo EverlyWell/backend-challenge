@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  has_many :friendships
+
   before_save :generate_profile_metadata, on: :create
 
   def generate_profile_metadata
