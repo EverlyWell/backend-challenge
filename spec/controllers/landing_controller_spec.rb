@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe LandingController, type: :controller do
+describe LandingController, type: :controller do
   render_views
 
   describe 'GET #show' do

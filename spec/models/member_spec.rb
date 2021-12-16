@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Member, type: :model do
   describe 'factory' do
     subject { build(:member) }
