@@ -1,17 +1,16 @@
 describe 'Members', type: :request do
   let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
 
   describe 'creating a member' do
-    subject { post '/members', params: params.to_json, headers: headers }
+    subject { post '/members', params: params.to_json }
 
     context 'with valid params' do
       let(:params) do
         {
           member: {
-            first_name: 'Sandi',
-            last_name: 'Metz',
-            url: 'http://www.example.com'
+            name: 'Sandi Metz',
+            email: 'sandi@metz.com',
+            personal_website_url: 'http://www.example.com'
           }
         }
       end
