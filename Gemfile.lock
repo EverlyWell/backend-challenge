@@ -271,6 +271,7 @@ DEPENDENCIES
   faker
   haml-rails (~> 2.0)
   listen (~> 3.3)
+  nokogiri
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
