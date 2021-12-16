@@ -5,4 +5,6 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :name, :personal_website_url
+
+  has_many :headings
 end
