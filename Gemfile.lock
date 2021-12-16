@@ -229,6 +229,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sucker_punch (3.0.1)
+      concurrent-ruby (~> 1.0)
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
@@ -279,6 +281,7 @@ DEPENDENCIES
   shoulda-matchers
   spring
   spring-commands-rspec
+  sucker_punch (~> 3.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
