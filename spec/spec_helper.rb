@@ -23,7 +23,19 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock # or :fakeweb
+end
+
 RSpec.configure do |config|
+  config.add_setting(
+    :vcr_record_mode,
+    default: :new_episodes, # :all, :none
+    alias_with: :vcr_record_mode,
+    preserve_exact_body_bytes: true
+  )
+
   config.include Devise::Test::ControllerHelpers, type: :controller
   
   # rspec-expectations config goes here. You can use an alternate
