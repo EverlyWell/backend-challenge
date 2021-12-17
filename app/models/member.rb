@@ -8,6 +8,8 @@ class Member < ApplicationRecord
 
   has_many :headings
 
+  has_and_belongs_to_many :friends
+
   def pull_headings_async
     HeadingsPullerJob.perform_async(id)
   end
