@@ -1,5 +1,9 @@
 describe 'Members', type: :request do
-  let(:body) { JSON.parse(response.body) }
+  let(:logged_in_member) { create(:member) }
+
+  before do
+    sign_in logged_in_member, scope: :member
+  end
 
   describe 'creating a member' do
     subject { post '/members', params: params.to_json }
@@ -19,7 +23,7 @@ describe 'Members', type: :request do
 
       it 'returns the correct status code' do
         subject
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:redirect)
       end
     end
   end

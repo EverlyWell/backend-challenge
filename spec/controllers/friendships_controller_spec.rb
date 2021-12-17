@@ -1,6 +1,12 @@
 describe FriendshipsController, type: :controller do
   render_views
 
+  let(:logged_in_member) { create(:member) }
+
+  before do
+    sign_in logged_in_member, scope: :member
+  end
+
   describe 'POST #create' do
     let(:member) { create(:member) }
     let(:other_member) { create(:member) }

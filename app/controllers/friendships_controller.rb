@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     Friendship.create!(permitted_params)
 

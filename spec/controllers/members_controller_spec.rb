@@ -1,6 +1,12 @@
 describe MembersController, type: :controller do
   render_views
 
+  let(:logged_in_member) { create(:member) }
+
+  before do
+    sign_in logged_in_member, scope: :member
+  end
+
   describe 'GET #show' do
     let(:member) do
       create(
