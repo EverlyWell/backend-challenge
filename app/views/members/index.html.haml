@@ -20,8 +20,5 @@
               %p
                 Your friend!
             - else
-              = form_for :friendship, url: '/friendships' do |f|
-                = f.hidden_field :friend_id, value: member.id
-                = f.hidden_field :member_id, value: current_member.id
-                = f.submit 'Add as friend'
+              = render partial: 'members/add_friend_form', locals: {member: member, current_member: current_member}
 

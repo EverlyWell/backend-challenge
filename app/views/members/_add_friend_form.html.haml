@@ -1,0 +1,5 @@
+= form_for :friendship, url: '/friendships' do |f|
+  = f.hidden_field :friend_id, value: member.id
+  = f.hidden_field :member_id, value: current_member.id
+  = f.submit 'Add as friend'
+
