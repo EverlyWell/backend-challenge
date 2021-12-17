@@ -5,6 +5,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'rails/all'
 require 'database_cleaner'
+require 'sucker_punch/testing/inline'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
