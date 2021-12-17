@@ -1,0 +1,15 @@
+%h1
+  All Members
+
+
+%table
+  %tbody
+    %tr
+      %td Name:
+      %td Personal website:
+      %td Friends count:
+    - @members.each do |member|
+      %tr
+        %td= link_to member.name, member_path(member)
+        %td= member.shortened_personal_website_url
+        %td= member.friendships.count

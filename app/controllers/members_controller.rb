@@ -3,6 +3,10 @@ class MembersController < ApplicationController
     @member = Member.find(permitted_params[:id])
   end
 
+  def index
+    @members = Member.all
+  end
+
   private
 
   def permitted_params

@@ -9,4 +9,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %main.container
+      %nav
+        %strong Everly Friends
+      %ul
+        %li
+          = link_to 'All Members', members_path
+        - if member_signed_in?
+          %li
+            = link_to 'My profile', member_path(id: current_member)
       = yield

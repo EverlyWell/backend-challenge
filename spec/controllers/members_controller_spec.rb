@@ -30,4 +30,26 @@ describe MembersController, type: :controller do
       end
     end
   end
+
+  describe 'GET #index' do
+    let(:members) do
+      create_list(:member, 3, shortened_personal_website_url: 'http://chiq.me/wvww')
+    end
+
+    let(:get_index) do
+      get :index
+    end
+
+    it 'responds with HTTP 200 Ok' do
+       expect(get_index).to have_http_status(:ok)
+    end
+
+    it 'displays the members information' do
+      members.each do |member|
+        expect(get_index.body).to have_content(member.name)
+
+        expect(get_index.body).to have_content(member.shortened_personal_website_url)
+      end
+    end
+  end
 end
