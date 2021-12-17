@@ -7,4 +7,8 @@ class Member < ApplicationRecord
   validates_presence_of :name, :personal_website_url
 
   has_many :headings
+
+  def pull_headings_async
+    HeadingsPullerJob.perform_async(id)
+  end
 end
