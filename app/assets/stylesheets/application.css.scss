@@ -12,10 +12,5 @@
  *
  */
 
-@import 'vendor/pico/pico'
-
-.alert.success
-  background-color: greenyellow;
-  padding: 1rem;
-  display: inline-block;
-
+@import 'vendor/pico/pico';
+@import 'main';
