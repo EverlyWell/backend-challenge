@@ -37,3 +37,33 @@
             %li
               = heading.name
 
+  %div
+    .members_headings_search
+      %h2
+        Potential friend search
+      %p
+        Search a topic to connect with other potential friends
+
+      = form_tag('', method: :get) do
+        .grid
+          = hidden_field_tag :member_id, value: @member.id
+          = text_field_tag :query, placeholder: 'How To Learn Stuff Quickly'
+          = submit_tag 'search', id: :search_button
+
+      %table
+        %tbody
+          %tr
+            %td Name:
+            %td Who knows who:
+          - if @potential_friends.present?
+            - @potential_friends.each do |potential_friend|
+              %tr
+                %td= link_to potential_friend.name, member_path(potential_friend)
+                %td= friendly_path_to_member(potential_friend.path_to_other_member)
+          - else
+            %tr
+              %td
+                search for a topic first...
+              %td
+                #{''}
+                

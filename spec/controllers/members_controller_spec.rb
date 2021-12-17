@@ -35,6 +35,34 @@ describe MembersController, type: :controller do
         expect(get_show.body).to have_content(heading.name)
       end
     end
+
+    describe 'searching for potential_friends with results' do
+      # Set up the friend of a friend result
+      let!(:query) { 'Dog breeding in Ukraine' }
+      let!(:friend) { create(:member) }
+      let!(:friend_of_friend) { create(:member) }
+
+      before do
+        create(:friendship, member: member, friend: friend)
+        create(:friendship, member: friend, friend: friend_of_friend)
+
+        create(:heading, name: query, member: friend_of_friend)
+      end
+
+      let(:get_show_with_potential_friend_search) do
+        get :show, params: {id: member.id, query: query}
+      end
+
+      it 'displays the friend of a friend result' do
+        expect(get_show_with_potential_friend_search.body).to have_content(friend_of_friend.name)
+      end
+
+      it 'displays the friend of a friend social path to the member' do
+        expect(get_show_with_potential_friend_search.body).to have_content(
+          "#{member.name} -> #{friend.name} -> #{friend_of_friend.name}"
+        )
+      end
+    end
   end
 
   describe 'GET #index' do
