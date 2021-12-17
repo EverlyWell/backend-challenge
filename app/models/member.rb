@@ -13,6 +13,9 @@ class Member < ApplicationRecord
   has_many :friendship_list, foreign_key: :member_id, class_name: 'Friendship'
   has_many :on_friendship_list, foreign_key: :friend_id, class_name: 'Friendship'
 
+  # We want to cache the expensive graph search to display it on the potential friends search
+  attr_accessor :path_to_other_member
+
   def friends
     on_friendship_list.map(&:member) + friendship_list.map(&:friend)
   end
