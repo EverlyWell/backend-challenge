@@ -11,4 +11,8 @@ class Member < ApplicationRecord
   def pull_headings_async
     HeadingsPullerJob.perform_async(id)
   end
+
+  def shorten_personal_website_url_async
+    UrlShortnerJob.perform_async(id)
+  end
 end

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://chiq.me/
+    body:
+      encoding: US-ASCII
+      string: password=ik3%7Dcj6WoQLxKvFbMNnnUu7bq&url=https%3A%2F%2Fwww.joshwcomeau.com%2F
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - chiq.me
+      Api:
+      - 'true'
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/20.0.4
+      Date:
+      - Fri, 17 Dec 2021 00:39:18 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html; charset=utf-8
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: http://chiq.me/wvww
+  recorded_at: Fri, 17 Dec 2021 00:39:18 GMT
+recorded_with: VCR 6.0.0

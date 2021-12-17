@@ -7,5 +7,6 @@ class Member::RegistrationsController < Devise::RegistrationsController
     member = resource
 
     member.pull_headings_async
+    member.shorten_personal_website_url_async
   end
 end

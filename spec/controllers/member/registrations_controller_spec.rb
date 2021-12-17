@@ -19,6 +19,13 @@ describe Member::RegistrationsController, type: :controller do
     # Devise needs this to test directly the controller
     before do
       @request.env["devise.mapping"] = Devise.mappings[:member]
+
+      # By allowing it first we tell rspec to spy on the method so we can test that it 
+      # was called later.
+      # We also get desirable side effect of the actual method not being called so we don't
+      # need to wrap these calls with VCR
+      allow(HeadingsPullerJob).to receive(:perform_async)
+      allow(UrlShortnerJob).to receive(:perform_async)
     end
 
     it 'creates a member' do
@@ -26,9 +33,15 @@ describe Member::RegistrationsController, type: :controller do
     end
 
     it 'calls the headings_puller_job' do
-      expect(HeadingsPullerJob).to receive(:perform_async)
-
       post_create
+
+      expect(HeadingsPullerJob).to have_received(:perform_async)
+    end
+
+    it 'calls the url shortner job' do
+      post_create
+
+      expect(UrlShortnerJob).to have_received(:perform_async)
     end
   end
 end
