@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
   def permit_extra_devise_fields
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :personal_website_url])
   end
+
+  def after_sign_in_path_for(member)
+    member_path(member)  
+  end
+
+  def after_sign_up_path_for(member)
+    member_path(member)  
+  end
 end
