@@ -1,0 +1,37 @@
+%h1
+  Member page    
+
+.member_profile
+  %ul
+    %li
+      Name:
+      %br
+      = @member.name
+    %li
+      email:
+      %br
+      = @member.email
+    %li
+      Personal website url:
+      %br
+      = @member.personal_website_url
+    %li
+      Shortened persona website url:
+      %br
+      - if @member.shortened_personal_website_url.present?
+        = @member.shortened_personal_website_url
+      - else
+        loading shortened personal_website_url
+
+.member_headings
+  %h2
+    Headings
+  %ul
+    - if @member.headings.empty?
+      loading member headings...
+      %br
+      please refresh the page in a few minutes
+    - else
+      - @member.headings.each do |heading|
+        %li
+          = heading.name
