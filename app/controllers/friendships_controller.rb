@@ -9,7 +9,9 @@ class FriendshipsController < ApplicationController
     redirect_back(fallback_location: '/')
   end
 
-  def permitted_params
-    params.require(:friendship).permit(:member_id, :friend_id)
-  end
+  private
+
+    def permitted_params
+      params.require(:friendship).permit(:member_id, :friend_id)
+    end
 end

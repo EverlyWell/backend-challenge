@@ -19,4 +19,7 @@
           - if member_signed_in?
             %li
               = link_to 'My profile', member_path(id: current_member)
+      - flash.each do |type, msg|
+        %div{class: "alert #{type}"}
+          = msg
       = yield
