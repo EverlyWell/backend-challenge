@@ -44,8 +44,6 @@ class UrlShortnerJob < ApplicationJob
 
     # Fetch Request
     res = http.request(req)
-    puts "Response HTTP Status Code: #{res.code}"
-    puts "Response HTTP Response Body: #{res.body}"
     res
   rescue StandardError => e
     puts "HTTP Request failed (#{e.message})"
