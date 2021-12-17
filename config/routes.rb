@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: "landing#show"
 
   resources :members, only: [:show, :index]
+  resources :friendships, only: [:create]
 end

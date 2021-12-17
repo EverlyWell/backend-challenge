@@ -8,8 +8,20 @@
       %td Name:
       %td Personal website:
       %td Friends count:
+      %td 
     - @members.each do |member|
-      %tr
-        %td= link_to member.name, member_path(member)
-        %td= member.shortened_personal_website_url
-        %td= member.friendships.count
+      - if current_member != member
+        %tr
+          %td= link_to member.name, member_path(member)
+          %td= member.shortened_personal_website_url
+          %td= member.friendships.count
+          %td
+            - if current_member.friends.include?(member)
+              %p
+                Your friend!
+            - else
+              = form_for :friendship, url: '/friendships' do |f|
+                = f.hidden_field :friend_id, value: member.id
+                = f.hidden_field :member_id, value: current_member.id
+                = f.submit 'Add as friend'
+
