@@ -40,8 +40,9 @@ We encourage the use of any libraries for everything except the search functiona
 
 ### Submission
 
-* Somehow share your repository with us
+* __Fork__ this repository to your own git
 * Remember to make meaningful commits as you work
+* Somehow share your repository with us
 * __Important:__ If there are credentials required (.env or master.key file), please email these to us directly or we can’t review your project
 * After you fork the repo, you can run the following commands in your terminal:
         
