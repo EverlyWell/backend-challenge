@@ -45,9 +45,8 @@ We encourage the use of any libraries for everything except the search functiona
 * __Important:__ If there are credentials required (.env or master.key file), please email these to us directly or we can’t review your project
 * After you fork the repo, you can run the following commands in your terminal:
         
-        bundle install
-        rails db:drop db:setup
-        rspec
+        bin/setup
+        bin/rspec
         
 * Feel free to add to add/modify existing specs. Just make sure the original request specs are still present.
 * Here are the required routes:
@@ -56,3 +55,17 @@ We encourage the use of any libraries for everything except the search functiona
         [POST] "/members"
          [GET] "/members"
          [GET] "/members/:member_id"
+
+## Reviewer Setup
+
+1. Clone the candidate's branch
+1. Execute the following:
+
+        bin/bundle
+        bin/rails db:drop
+        bin/setup
+        bin/rspec
+        
+1. [Make a copy](https://docs.google.com/spreadsheets/u/0/d/1t6aY1dpVv4jEG1Xq2x5DHkQrXNsMrJfn_fhdSZM6C_8/copy) of the rubric and fill it in
+1. Ensure that the requests specs are the same or improved
+1. Add a short summary to the Rubric and share it in our engineering-coding-projects Slack channel
