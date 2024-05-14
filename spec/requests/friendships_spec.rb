@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe 'Friendships', type: :request do
-  let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
+describe 'Friendships' do
+  let(:body) { response.parsed_body }
+  let(:headers) { { 'Accept' => 'application/json', 'Content-Type' => 'application/json' } }
 
   describe 'creating a friendship' do
     subject { post '/friendships', params: params.to_json, headers: headers }
@@ -12,7 +14,7 @@ describe 'Friendships', type: :request do
         {
           friendship: {
             member_id: 1,
-            friend_id: 2,
+            friend_id: 2
           }
         }
       end

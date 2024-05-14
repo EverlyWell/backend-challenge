@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe 'Members', type: :request do
-  let(:body) { JSON.parse(response.body) }
-  let(:headers) { { "Accept" => "application/json", 'Content-Type' => 'application/json' } }
+describe 'Members' do
+  let(:body) { response.parsed_body }
+  let(:headers) { { 'Accept' => 'application/json', 'Content-Type' => 'application/json' } }
 
   describe 'creating a member' do
     subject { post '/members', params: params.to_json, headers: headers }
